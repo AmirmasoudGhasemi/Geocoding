@@ -1,0 +1,14 @@
+
+import os, sys
+package_directory = os.path.dirname(os.path.realpath(__file__))
+sys.path.insert(0, os.path.join(package_directory, 'application'))
+
+from http.server import HTTPServer
+from server import Server
+
+httpd = HTTPServer(('0.0.0.0', 3500), Server)
+print("Server is running at http://localhost:3500")
+while True:
+	httpd.handle_request()
+
+main()
